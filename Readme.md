@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Александра K](https://up.htmlacademy.ru/javascript/29/user/2354303).
-* Наставник: [Евгений Лепёшкин](https://htmlacademy.ru/profile/spearance).
+* Наставник: [Александр Конотоп](https://htmlacademy.ru/profile/sineway).
 
 ---
 

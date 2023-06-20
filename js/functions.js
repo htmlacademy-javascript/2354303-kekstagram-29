@@ -48,3 +48,15 @@ const createNumber = (str) => {
   //return (number === 0) ? NaN : Number(number.toString().replaceAll(',', ''));
 };
 createNumber('1 кефир, 0.5 батона');
+
+
+/* Функция рандома
+  возвращает случайное число в диапазоне
+*/
+const getRandomInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
+getRandomInteger();
