@@ -47,10 +47,12 @@ const DESCRIPTIONS = [
 
 const PHOTOS = [];
 
+const createMessage = () => Array.from({length: getRandomInteger(1,2)}, ()=>getRandomArrayElement(MESSAGES),).join('');
+
 const addComment = (id) => ({
   id: id,
   avatar: `img/avatar-${getRandomInteger(avatar.MIN, avatar.MAX)}.svg`,
-  message: getRandomArrayElement(MESSAGES),
+  message: createMessage(),
   name: getRandomArrayElement(NAMES)
 });
 
@@ -75,6 +77,6 @@ const addPhotos = () => {
 };
 addPhotos();
 
-//const createPhotos = () => Array.from({lenght:PHOTO_COUNT}, (_,index)=> addPhoto(index));
+//const createPhotos = () => Array.from({lenght:PHOTO_COUNT}, (_,index)=> addPhoto(index+1));
 //const photos = createPhotosreatePhotos(); И тогда ++id
 
