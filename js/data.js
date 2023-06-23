@@ -3,20 +3,9 @@ import {getRandomInteger} from './functions.js';
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 const PHOTO_COUNT = 25;
-
-const COMMENT = {
-  MIN: 0,
-  MAX: 30
-};
-const LIKE = {
-  MIN: 15,
-  MAX: 200
-};
-
-const avatar = {
-  MIN: 1,
-  MAX: 6
-};
+const commentsRange = [0, 30];
+const likesRange = [15, 200];
+const avatarsRange = [1, 6];
 
 const MESSAGES = [
   'Всё отлично!',
@@ -45,39 +34,36 @@ const DESCRIPTIONS = [
   'Это должно быть в вашей ленте'
 ];
 
-const PHOTOS = [];
+export const PHOTOS = [];
 
 const createMessage = () => Array.from({length: getRandomInteger(1,2)}, ()=>getRandomArrayElement(MESSAGES),).join('');
 
-const addComment = (id) => ({
+const createComment = (id) => ({
   id: id,
-  avatar: `img/avatar-${getRandomInteger(avatar.MIN, avatar.MAX)}.svg`,
+  avatar: `img/avatar-${getRandomInteger(...avatarsRange)}.svg`,
   message: createMessage(),
   name: getRandomArrayElement(NAMES)
 });
 
-const addComments = () => {
-  let Comments = [];
-  Comments = Array.from({length:getRandomInteger(COMMENT.MIN, COMMENT.MAX)}, (_,index)=>addComment(index));
-  return Comments;
-};
+const createComments = () =>
+  // let Comments = [];
+  Array.from({length:getRandomInteger(...commentsRange)}, (_,index)=>createComment(index));
+  //return Comments;
 
-const addPhoto = (id) => ({
+const createPhoto = (id) => ({
   id: id,
   url: `photos/${id}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
-  likes: getRandomInteger(LIKE.MIN, LIKE.MAX),
-  comments: addComments()
+  likes: getRandomInteger(...likesRange),
+  comments: createComments()
 });
 
-const addPhotos = () => {
+const createPhotos = () => {
   for (let i = 1; i <= PHOTO_COUNT; i++){
-    PHOTOS.push(addPhoto(i));
+    PHOTOS.push(createPhoto(i));
   }
 };
-addPhotos();
+createPhotos();
 
 //const createPhotos = () => Array.from({lenght:PHOTO_COUNT}, (_,index)=> addPhoto(index+1));
 //const photos = createPhotosreatePhotos(); И тогда ++id
-
-export {PHOTOS};
