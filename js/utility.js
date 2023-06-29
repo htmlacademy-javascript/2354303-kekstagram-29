@@ -1,11 +1,4 @@
-import {getRandomInteger} from './functions.js';
-
-const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
-
-const PHOTO_COUNT = 25;
-const commentsRange = [0, 30];
-const likesRange = [15, 200];
-const avatarsRange = [1, 6];
+import {pickItemFromArray, pickIntegerInRange} from './functions.js';
 
 const MESSAGES = [
   'Всё отлично!',
@@ -21,7 +14,7 @@ const NAMES = [
   'Anjela Ohopova', 'Anna Izmaylova', 'Dmitry Sergeev', 'Yesaul Prihodko','Snejana Venisik', 'Uriy Krivov'
 ];
 
-const DESCRIPTIONS = [
+const descriptions = [
   'Я думаю это интересное фото',
   'Лучшая моя фотка',
   'Так себе, но мы старались',
@@ -34,36 +27,53 @@ const DESCRIPTIONS = [
   'Это должно быть в вашей ленте'
 ];
 
-export const PHOTOS = [];
+const PHOTO_COUNT = 25;
+const commentsRange = [0, 30];
+const likesRange = [15, 200];
+const avatarsRange = [1, 6];
 
-const createMessage = () => Array.from({length: getRandomInteger(1,2)}, ()=>getRandomArrayElement(MESSAGES),).join('');
+/**
+ * @param {number} length
+ * @returns {Array<Picture>}
+ */
+function createPictureArray(length = PHOTO_COUNT) {
+  const items = new Array(length).fill(1);
 
-const createComment = (id) => ({
-  id: id,
-  avatar: `img/avatar-${getRandomInteger(...avatarsRange)}.svg`,
-  message: createMessage(),
-  name: getRandomArrayElement(NAMES)
-});
+  return items.map((start, index) => createPicture(start + index));
+}
 
-const createComments = () =>
-  // let Comments = [];
-  Array.from({length:getRandomInteger(...commentsRange)}, (_,index)=>createComment(index));
-  //return Comments;
+/**
+ * @param {number} id
+ * @returns {Picture}
+ */
+function createPicture(id) {
+  const url = `photos/${id}.jpg`;
+  const description = pickItemFromArray(descriptions);
+  const likes = pickIntegerInRange(...likesRange);
+  const comments = createPictureCommentArray(pickIntegerInRange(...commentsRange));
 
-const createPhoto = (id) => ({
-  id: id,
-  url: `photos/${id}.jpg`,
-  description: getRandomArrayElement(DESCRIPTIONS),
-  likes: getRandomInteger(...likesRange),
-  comments: createComments()
-});
+  return {id, url, description, likes, comments};
+}
+/**
+ * @param {number} length
+ * @returns {Array<PictureComment>}
+ */
+function createPictureCommentArray(length) {
+  const items = new Array(length).fill(1);
 
-const createPhotos = () => {
-  for (let i = 1; i <= PHOTO_COUNT; i++){
-    PHOTOS.push(createPhoto(i));
-  }
-};
-createPhotos();
+  return items.map((start, index) => createPictureComment(start + index));
+}
 
-//const createPhotos = () => Array.from({lenght:PHOTO_COUNT}, (_,index)=> addPhoto(index+1));
-//const photos = createPhotosreatePhotos(); И тогда ++id
+/**
+ * @param {number} id
+ * @returns {PictureComment}
+ */
+function createPictureComment(id) {
+  const avatar = `img/avatar-${pickIntegerInRange(...avatarsRange)}.svg`;
+  const message = pickItemFromArray(MESSAGES);
+  const name = pickItemFromArray(NAMES);
+
+  return {id, avatar, message, name};
+}
+
+export default createPictureArray;

@@ -94,3 +94,4 @@ function parseTime(time) {
 
   return hours * minutesPerHour + minutes;
 }
+
