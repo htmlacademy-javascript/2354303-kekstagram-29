@@ -1,4 +1,4 @@
-import {pickItemFromArray, pickIntegerInRange} from './functions.js';
+import {pickItemFromArray, pickIntegerInRange} from './utils.js';
 
 const MESSAGES = [
   'Всё отлично!',

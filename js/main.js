@@ -1,4 +1,4 @@
-import './functions.js';
-import './data.js';
+import createPictureArray from './data.js';
+import initGallery from './gallery.js';
 
-//тут скоро будет написано что-то действительно полезное
+initGallery(createPictureArray());

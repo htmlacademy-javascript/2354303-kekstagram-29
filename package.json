@@ -13,12 +13,13 @@
   "devDependencies": {
     "browser-sync": "2.29.3",
     "eslint": "8.42.0",
-    "eslint-config-htmlacademy": "9.1.1"
+    "eslint-config-htmlacademy": "9.1.1",
+    "typescript": "5.1.6"
   },
   "license": "MIT",
   "scripts": {
     "start": "browser-sync start --server --no-ui --files \"js/**/*.js\"",
-    "lint": "eslint js/"
+    "lint": "tsc && eslint js/"
   },
   "engines": {
     "node": "18",
