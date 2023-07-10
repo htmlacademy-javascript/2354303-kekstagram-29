@@ -16,6 +16,7 @@ function showPopup(popup) {
 function hidePopup(popup) {
   popup.classList.add('hidden');
   popup.removeEventListener('click', onPopupClick);
+  popup.dispatchEvent(new Event('hide'));
 
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
