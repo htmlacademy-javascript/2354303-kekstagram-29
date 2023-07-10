@@ -32,10 +32,13 @@ function onPopupClick(event) {
 }
 
 /**
- * @param {KeyboardEvent} event
+ * @param {KeyboardEvent & {target: Element}} event
  */
 function onDocumentKeydown(event) {
-  if (event.key.startsWith('Esc')) {
+  const isEscapeKey = event.key.startsWith('Esc');
+  const isTextField = event.target.matches('input[type="text"], textarea');
+
+  if (isEscapeKey && !isTextField) {
     hidePopup(document.querySelector('.overlay:not(.hidden)'));
   }
 }
