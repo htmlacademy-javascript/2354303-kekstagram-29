@@ -14,3 +14,17 @@
  * @prop {string} message
  * @prop {string} name
  */
+
+/**
+ * @typedef ScaleControl
+ * @prop {() => number} getValue
+ * @prop {(percent: number) => void} setValue
+ * @prop {(type: string, listener: EventListener) => void} on
+ */
+
+/**
+ * @typedef ScaleControlOptions
+ * @prop {number} [min]
+ * @prop {number} [max]
+ * @prop {number} [step]
+ */
