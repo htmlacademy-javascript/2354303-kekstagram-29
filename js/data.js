@@ -28,8 +28,17 @@ const descriptions = [
 ];
 
 const PHOTO_COUNT = 25;
+/**
+ * @type {[min: number, max: number]}
+ */
 const commentsRange = [0, 30];
+/**
+ * @type {[min: number, max: number]}
+ */
 const likesRange = [15, 200];
+/**
+ * @type {[min: number, max: number]}
+ */
 const avatarsRange = [1, 6];
 
 /**
@@ -49,9 +58,7 @@ function createPictureArray(length = PHOTO_COUNT) {
 function createPicture(id) {
   const url = `photos/${id}.jpg`;
   const description = pickItemFromArray(descriptions);
-  // @ts-ignore
   const likes = pickIntegerInRange(...likesRange);
-  // @ts-ignore
   const comments = createPictureCommentArray(pickIntegerInRange(...commentsRange));
 
   return {id, url, description, likes, comments};
@@ -71,7 +78,6 @@ function createPictureCommentArray(length) {
  * @returns {PictureComment}
  */
 function createPictureComment(id) {
-  // @ts-ignore
   const avatar = `img/avatar-${pickIntegerInRange(...avatarsRange)}.svg`;
   const message = pickItemFromArray(MESSAGES);
   const name = pickItemFromArray(NAMES);

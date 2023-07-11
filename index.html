@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/pristine.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кекстаграм</title>
+  <script src="vendor/pristine/pristine.min.js" defer></script>
   <script src="js/main.js" type="module"></script>
 </head>
 
@@ -31,16 +33,16 @@
       <section class="img-upload">
         <div class="img-upload__wrapper">
           <h2 class="img-upload__title  visually-hidden">Загрузка фотографии</h2>
-          <form class="img-upload__form" id="upload-select-image" autocomplete="off">
+          <form method="post"  action="https://29.javascript.pages.academy/kekstagram"  enctype="multipart/form-data"  class="img-upload__form" id="upload-select-image" autocomplete="off">
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
-              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename" required>
+              <input type="file" accept=".jpg, .png, .jpeg"  id="upload-file" class="img-upload__input  visually-hidden" name="filename" required>
               <label for="upload-file" class="img-upload__label  img-upload__control">Загрузить</label>
             </fieldset>
 
             <!-- Форма редактирования изображения -->
-            <div class="img-upload__overlay  hidden">
+            <div class="img-upload__overlay  overlay  hidden">
               <div class="img-upload__wrapper">
                 <div class="img-upload__preview-container">
 
@@ -117,10 +119,30 @@
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
                   <div class="img-upload__field-wrapper">
-                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
+                    <input
+                      type="text"
+                      class="text__hashtags"
+                      name="hashtags"
+                      placeholder="#ХэшТег"
+                      data-pristine-word-pattern="#[a-zа-яё0-9]+"
+                      data-pristine-word-pattern-message="Сначала #, потом буквы/числа"
+                      data-pristine-unique-words
+                      data-pristine-unique-words-message="Хэштеги не должны повторяться"
+                      data-pristine-word-maxlength="20"
+                      data-pristine-word-maxlength-message="Длина хэштега не более ${1} символов"
+                      data-pristine-max-words="5"
+                      data-pristine-max-words-message="Нельзя указать больше ${1} хэштегов"
+
+                    >
                   </div>
                   <div class="img-upload__field-wrapper">
-                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+                    <textarea
+                      class="text__description"
+                      name="description"
+                      placeholder="Ваш комментарий..."
+                      data-pristine-maxlength="140"
+                      data-pristine-maxlength-message="Длина поля не более ${1} символов"
+                    ></textarea>
                   </div>
                 </fieldset>
 
