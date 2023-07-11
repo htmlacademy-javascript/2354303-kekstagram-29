@@ -28,3 +28,14 @@
  * @prop {number} [max]
  * @prop {number} [step]
  */
+
+/**
+ * @typedef {'none' | 'chrome' | 'sepia' | 'marvin' | 'phobos' | 'heat'} EffectType
+ */
+
+/**
+ * @typedef EffectSlider
+ * @prop {(type: EffectType) => void} setEffect
+ * @prop {() => string} getCssValue
+ * @prop {(type: string, listener: () => void) => void} on
+ */
