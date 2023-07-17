@@ -39,3 +39,13 @@
  * @prop {() => string} getCssValue
  * @prop {(type: string, listener: () => void) => void} on
  */
+
+/**
+ * @typedef {'success' | 'error'} StatusType
+ */
+
+/**
+ * @typedef StatusOptions
+ * @prop {string} [title]
+ * @prop {string} [button]
+ */
