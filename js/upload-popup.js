@@ -13,8 +13,8 @@ const effectPicker = popup.querySelector('.effects');
  * @param {File} data
  */
 function renderPopup(data) {
-  //TODO: Подстановка изображения
-  void data;
+  //Подстановка изображения
+  setPreviewUrl(URL.createObjectURL(data));
 
   scaleControl.on('update', onScaleControlUpdate);
   scaleControl.setValue(100);
@@ -25,6 +25,17 @@ function renderPopup(data) {
   effectPicker.addEventListener('change', onEffectPickerChange);
 
   showPopup(popup);
+}
+
+/**
+ * @param {string} url
+ */
+function setPreviewUrl(url) {
+  preview.setAttribute('src', url);
+
+  effectPicker.querySelectorAll('span').forEach((it) => {
+    it.style.setProperty('background-image', `url(${url})`);
+  });
 }
 
 function onScaleControlUpdate() {

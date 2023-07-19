@@ -1,5 +1,7 @@
 import renderPopup from './gallery-popup.js';
+import {throttle} from './utils.js';
 
+const menu = document.querySelector('.img-filters');
 const gallery = document.querySelector('.pictures');
 
 /**
@@ -11,8 +13,56 @@ const thumbnailTemplate = document.querySelector('#picture');
  * @param {Array<Picture>} data
  */
 function initGallery(data) {
-  // TODO: Сортировка
+  // Сортировка
+  const filter = createFilter(data);
+
+  menu.classList.remove('img-filters--inactive');
+  menu.addEventListener('click', onMenuClick);
+
+  menu.addEventListener('toggle', throttle((event) => {
+    const selectedButton = /** @type {HTMLButtonElement} */(event.target);
+    const selectedValue = /** @type {FilterType} */(selectedButton.getAttribute('value'));
+
+    renderThumbnails(filter(selectedValue));
+  }), true);
   renderThumbnails(data);
+}
+
+/**
+* @param {Array<Picture>} data
+ * @param {{randomLimit?: number}} options
+ * @returns {(type: FilterType) => Array<Picture>}
+ */
+function createFilter(data, options = {}) {
+  const {randomLimit = 10} = options;
+
+  return (type) => {
+    const items = structuredClone(data);
+
+    if (type === 'random') {
+      return items.sort(() => Math.random() - .5).slice(0, randomLimit);
+    }
+
+    if (type === 'discussed') {
+      return items.sort((a, b) => b.comments.length - a.comments.length);
+    }
+
+    return items;
+  };
+}
+
+/**
+ * @param {MouseEvent & {target: Element}} event
+ */
+function onMenuClick(event) {
+  const selectedButton = event.target.closest('button');
+
+  if (selectedButton) {
+    menu.querySelectorAll('button').forEach((it) => {
+      it.classList.toggle('img-filters__button--active', it === selectedButton);
+    });
+    selectedButton.dispatchEvent(new Event('toggle'));
+  }
 }
 
 /**
