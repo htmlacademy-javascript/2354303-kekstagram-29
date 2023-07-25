@@ -1,3 +1,4 @@
+//слайдер эффекта на изображении
 /**
  * @param {Element} target
  * @returns {EffectSlider}

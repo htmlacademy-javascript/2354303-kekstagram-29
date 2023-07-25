@@ -1,3 +1,4 @@
+//получение данных с сервера
 /**
  * @param {string} url
  * @param {RequestInit} [options]
@@ -13,6 +14,7 @@ async function request(url, options) {
   return response.json();
 }
 
+//устранение дребезга
 /**
  * @template {Function} T
  * @param {T} callback

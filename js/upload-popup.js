@@ -13,7 +13,7 @@ const effectPicker = popup.querySelector('.effects');
  * @param {File} data
  */
 function renderPopup(data) {
-  //Подстановка изображения
+  //подстановка изображения
   setPreviewUrl(URL.createObjectURL(data));
 
   scaleControl.on('update', onScaleControlUpdate);
@@ -49,6 +49,7 @@ function onEffectSliderUpdate() {
   preview.style.setProperty('filter', effectSlider.getCssValue());
 }
 
+//изменение эффектов на изображении
 function onEffectPickerChange(event) {
   effectSlider.setEffect(event.target.getAttribute('value'));
 }

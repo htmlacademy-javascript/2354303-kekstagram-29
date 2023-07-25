@@ -3,6 +3,7 @@ import './upload.js';
 import { request } from './utils.js';
 import renderStatus from './status.js';
 
+//получение данных с сервера
 try {
   /**
    * @type {Array<Picture>}
@@ -11,6 +12,7 @@ try {
 
   initGallery(data);
 
+//форма вывода ошибки данных с сервера
 } catch (error) {
   const title = `Ошибка: ${error.message}`;
   const button = 'Закрыть';

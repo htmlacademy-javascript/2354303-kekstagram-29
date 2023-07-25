@@ -19,6 +19,7 @@ form.addEventListener('hide', onFormHide, true);
 form.addEventListener('reset', onFormReset);
 form.addEventListener('submit', onFormSubmit);
 
+//проверка и редактор загружаемой фотографии
 /**
  * @param {Event & {target: HTMLInputElement}} event
  */
@@ -47,6 +48,7 @@ function onFormReset() {
   pristine.reset();
 }
 
+//отправка данных на сервер
 /**
  * @param {SubmitEvent} event
  */

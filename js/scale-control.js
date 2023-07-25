@@ -1,3 +1,4 @@
+//масштабирование изображения
 /**
  * @param {Element} target
  * @param {ScaleControlOptions} options
