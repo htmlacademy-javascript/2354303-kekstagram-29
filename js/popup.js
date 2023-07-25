@@ -1,5 +1,5 @@
-//управление видимостью попап окон
 /**
+ * управление видимостью попап окон
  * @param {Element} popup
  */
 function showPopup(popup) {
@@ -32,8 +32,8 @@ function onPopupClick(event) {
   }
 }
 
-//запрет на закрытие попап-окна нажатием Esc, если фокус в текстовом поле
 /**
+ * запрет на закрытие попап-окна нажатием Esc, если фокус в текстовом поле
  * @param {KeyboardEvent & {target: Element}} event
  */
 function onDocumentKeydown(event) {

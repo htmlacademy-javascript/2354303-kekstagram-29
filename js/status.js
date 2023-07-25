@@ -1,5 +1,5 @@
-//статус взаимодействия с сервером
 /**
+ * статус взаимодействия с сервером
  * @param {StatusType} type
  * @param {StatusOptions} options
  */

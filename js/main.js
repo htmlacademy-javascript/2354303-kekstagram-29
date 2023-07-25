@@ -3,9 +3,9 @@ import './upload.js';
 import { request } from './utils.js';
 import renderStatus from './status.js';
 
-//получение данных с сервера
 try {
   /**
+   * получение данных с сервера
    * @type {Array<Picture>}
    */
   const data = await request('https://28.javascript.pages.academy/kekstagram/data');

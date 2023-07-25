@@ -25,8 +25,8 @@ function renderPopup(data) {
   showPopup(popup);
 }
 
-//загрузка комментариев блоками по 5 штук
 /**
+ * загрузка комментариев блоками по 5 штук
  * @param {Array<PictureComment>} data
  * @param {number} step
  * @returns {() => void}

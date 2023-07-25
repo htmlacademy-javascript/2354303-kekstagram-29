@@ -1,5 +1,5 @@
-//слайдер эффекта на изображении
 /**
+ * слайдер эффекта на изображени
  * @param {Element} target
  * @returns {EffectSlider}
  */

@@ -10,10 +10,10 @@ const gallery = document.querySelector('.pictures');
 const thumbnailTemplate = document.querySelector('#picture');
 
 /**
+ * сортировка, отрисовка галереи
  * @param {Array<Picture>} data
  */
 function initGallery(data) {
-  // сортировка
   const filter = createFilter(data);
 
   menu.classList.remove('img-filters--inactive');
@@ -28,9 +28,9 @@ function initGallery(data) {
   renderThumbnails(data);
 }
 
-//перерисовка миниатюр изображений при переключении фильтров
 /**
-* @param {Array<Picture>} data
+ * перерисовка миниатюр изображений при переключении фильтров
+ * @param {Array<Picture>} data
  * @param {{randomLimit?: number}} options
  * @returns {(type: FilterType) => Array<Picture>}
  */
@@ -52,8 +52,8 @@ function createFilter(data, options = {}) {
   };
 }
 
-//переключение фильтров
 /**
+ * переключение фильтров
  * @param {MouseEvent & {target: Element}} event
  */
 function onMenuClick(event) {
@@ -75,8 +75,8 @@ function renderThumbnails(data) {
   gallery.append(...data.map(createThumbnail));
 }
 
-//отрисовка сгенерированных данных в виде миниатюр
 /**
+ * отрисовка сгенерированных данных в виде миниатюр
  * @param {Picture} data
  * @returns {HTMLAnchorElement}
  */

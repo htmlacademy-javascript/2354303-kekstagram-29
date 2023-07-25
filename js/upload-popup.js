@@ -10,10 +10,10 @@ const effectSlider = initEffectSlider(popup.querySelector('.effect-level'));
 const effectPicker = popup.querySelector('.effects');
 
 /**
+ * подстановка изображения
  * @param {File} data
  */
 function renderPopup(data) {
-  //подстановка изображения
   setPreviewUrl(URL.createObjectURL(data));
 
   scaleControl.on('update', onScaleControlUpdate);
