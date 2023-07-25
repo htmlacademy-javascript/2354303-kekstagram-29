@@ -1,4 +1,5 @@
 /**
+ * получение данных с сервера
  * @param {string} url
  * @param {RequestInit} [options]
  * @returns {Promise}
@@ -14,6 +15,7 @@ async function request(url, options) {
 }
 
 /**
+ * устранение дребезга
  * @template {Function} T
  * @param {T} callback
  * @param {number} delay

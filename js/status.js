@@ -1,4 +1,5 @@
 /**
+ * статус взаимодействия с сервером
  * @param {StatusType} type
  * @param {StatusOptions} options
  */
@@ -11,6 +12,7 @@ function renderStatus(type, options = {}) {
     statusTemplate.content.querySelector(`.${type}`).cloneNode(true)
   );
 
+  //проверка выбранного файла
   Object.keys(options).forEach((key) => {
     status.querySelector(`.${type}__${key}`).textContent = options[key];
   });

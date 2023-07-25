@@ -2,3 +2,11 @@
   color:red;
   font-weight: 700;
 }
+
+.has-danger {
+  position: relative;
+}
+
+input + .pristine-error {
+  transform: translate(-50%, -50%);
+}

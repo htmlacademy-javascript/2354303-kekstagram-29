@@ -1,3 +1,4 @@
+//просмотр фотографий в полноразмерном режиме
 import { showPopup } from './popup.js';
 
 const popup = document.querySelector('.big-picture');
@@ -25,6 +26,7 @@ function renderPopup(data) {
 }
 
 /**
+ * загрузка комментариев блоками по 5 штук
  * @param {Array<PictureComment>} data
  * @param {number} step
  * @returns {() => void}
@@ -42,6 +44,7 @@ function createCommentsRenderer(data, step = COMMENTS_STEP) {
   return () => {
     discussion.append(...data.splice(0, step).map(createComment));
     moreButton.classList.toggle('hidden', data.length === 0);
+    //счётчик комментариев
     shownCount.textContent = String(commentsTotal - data.length);
   };
 }

@@ -10,10 +10,10 @@ const effectSlider = initEffectSlider(popup.querySelector('.effect-level'));
 const effectPicker = popup.querySelector('.effects');
 
 /**
+ * подстановка изображения
  * @param {File} data
  */
 function renderPopup(data) {
-  //Подстановка изображения
   setPreviewUrl(URL.createObjectURL(data));
 
   scaleControl.on('update', onScaleControlUpdate);
@@ -42,13 +42,14 @@ function onScaleControlUpdate() {
   const percent = scaleControl.getValue();
   const ratio = percent / 100;
 
-  preview.style.setProperty('transform', `scale(${ratio})`)
+  preview.style.setProperty('transform', `scale(${ratio})`);
 }
 
 function onEffectSliderUpdate() {
   preview.style.setProperty('filter', effectSlider.getCssValue());
 }
 
+//изменение эффектов на изображении
 function onEffectPickerChange(event) {
   effectSlider.setEffect(event.target.getAttribute('value'));
 }
