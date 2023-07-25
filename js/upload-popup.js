@@ -42,7 +42,7 @@ function onScaleControlUpdate() {
   const percent = scaleControl.getValue();
   const ratio = percent / 100;
 
-  preview.style.setProperty('transform', `scale(${ratio})`)
+  preview.style.setProperty('transform', `scale(${ratio})`);
 }
 
 function onEffectSliderUpdate() {
